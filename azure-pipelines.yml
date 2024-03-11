@@ -11,7 +11,7 @@ pool:
 
 variables:
   ## Azure Resource Manager connection created during pipeline creation
-  azureServiceConnectionId: 'myServiceConnection'
+  azureServiceConnectionId: 'UdacityProj2b'
   
   ## Web app name
   webAppName: 'myazureapponline11'
@@ -54,7 +54,7 @@ stages:
       inputs:
         rootFolderOrFile: '$(projectRoot)'
         includeRootFolder: false
-        archiveType: '7s'
+        archiveType: zip
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         replaceExistingArchive: true
 
