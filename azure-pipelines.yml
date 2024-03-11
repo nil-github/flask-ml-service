@@ -46,7 +46,6 @@ stages:
         source antenv/bin/activate
         python3 -m pip install --upgrade pip
         pip install -r requirements.txt
-        sudo apt-get -y install zip
         echo $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
