@@ -1,29 +1,32 @@
-# Python to Linux Web App on Azure
-# Build your Python project and deploy it to Azure as a Linux Web App.
-# Change python version to one thats appropriate for your application.
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 
 trigger:
-- master
+- main
+
+pool:
+  name: Default
 
 variables:
-  # Azure Resource Manager connection created during pipeline creation
+  ## Azure Resource Manager connection created during pipeline creation
   azureServiceConnectionId: 'myServiceConnection'
   
-  # Web app name
+  ## Web app name
   webAppName: 'myazureapponline11'
 
-  # Agent VM image name
+  ## Agent VM image name
   vmImageName: 'ubuntu-latest'
 
-  # Environment name
-  environmentName: 'flask-ml-service'
+  ## Environment name
+  environmentName: 'flaskweppapp2'
 
-  # Project root folder. Point to the folder containing manage.py file.
+  ## Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
   
-  # Python version: 3.7
-  pythonVersion: '3.7'
+  ## Python version: 3.7
+  pythonVersion: '3.8'
 
 stages:
 - stage: Build
@@ -31,7 +34,7 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      vmImage: $(vmImageName)
+      name: Default
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -39,14 +42,13 @@ stages:
       displayName: 'Use Python $(pythonVersion)'
     
     - script: |
-        python -m venv antenv
+        python3 -m venv antenv
         source antenv/bin/activate
-        python -m pip install --upgrade pip
-        pip install setup
+        python3 -m pip install --upgrade pip
         pip install -r requirements.txt
+        echo $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
-
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -58,8 +60,8 @@ stages:
 
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       displayName: 'Upload package'
-      artifact: drop
-
+      artifact: drop    
+ 
 - stage: Deploy
   displayName: 'Deploy Web App'
   dependsOn: Build
@@ -67,7 +69,7 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      vmImage: $(vmImageName)
+      name: Default
     environment: $(environmentName)
     strategy:
       runOnce:
@@ -80,7 +82,7 @@ stages:
             displayName: 'Use Python version'
 
           - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App : flask-ml-service'
+            displayName: 'Deploy Azure Web App : flaskweppapp2'
             inputs:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
