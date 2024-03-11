@@ -20,7 +20,7 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   ## Environment name
-  environmentName: 'flaskweppapp2'
+  environmentName: 'myazureapponline11'
 
   ## Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
@@ -69,7 +69,7 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      name: Default
+      name: myAgentPool
     environment: $(environmentName)
     strategy:
       runOnce:
@@ -82,7 +82,7 @@ stages:
             displayName: 'Use Python version'
 
           - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App : flaskweppapp2'
+            displayName: 'Deploy Azure Web App : myazureapponline11'
             inputs:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
