@@ -10,28 +10,34 @@ Architecture
  ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/8eada47a-2c54-4ac8-8664-bd871da2d1da)
 
 3>Setup Virtual Environment and activate it
+
 python3 -m venv ~/.flask-ml-azure
 source ~/.flask-ml-azure/bin/activate
 
 4>Clone Github Repo to Azure Cloud Shell
+
 git clone git@github.com:nil-github/flask-ml-service.git
 
 5>run make all in Azure cloud shell to download all the dependencies and test the code
+
 make all
 
 6>Deploy the app to Azure App Service
+
 az webapp up -n seemyazureapponline15 --resource-group Azuredevops --sku F1
  ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/75ade380-801a-494f-9888-f162cb6f533c)
  ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/3910bd4b-a420-4b1e-b3c7-16af6f4dccf3)
  ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/31e9ff9b-51ea-44bb-8f5f-918ea4a5fbb8)
 
 7>Make Manual Prediction
+
 chmod +x make_predict_azure_app.sh
 ./make_predict_azure_app.sh
  ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/e1f87b4b-6863-4e52-963e-2a030740582c)
  ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/415896b9-3cb8-4543-bfc8-9853e3d570c9)
 
 8>Run load test with locust
+
 pip insall locust
 locust -f locust.py
  ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/d475c797-2021-4577-a4bc-b40b8bcf0b29)
