@@ -52,6 +52,9 @@ locust -f locust.py
 ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/aa7b60c4-b32d-47aa-ad41-a4f6e5b5fefe)
 ![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/868f95bf-7b0a-4975-b2ca-217835314266)
 
+Demo:
+https://www.youtube.com/watch?v=hu-tCO7409Q
+
 
 
 
