@@ -40,6 +40,7 @@ Architecture:
 5>run make all in Azure cloud shell to download all the dependencies and test the code
 
  make all
+![image](https://github.com/nil-github/flask-ml-service_dev/assets/66524063/5dae069c-d918-4f1d-b67a-cf8c22b0c668)
 
 
 6>Deploy the app to Azure App Service
