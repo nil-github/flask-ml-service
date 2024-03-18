@@ -1,4 +1,5 @@
 [![Build Status](https://dev.azure.com/odluser254899/flask-ml-service_dev/_apis/build/status%2Fnil-github.flask-ml-service_dev?branchName=main)](https://dev.azure.com/odluser254899/flask-ml-service_dev/_build/latest?definitionId=2&branchName=main)
+
 [![Python application test with Github Actions](https://github.com/nil-github/flask-ml-service_dev/actions/workflows/main.yml/badge.svg)](https://github.com/nil-github/flask-ml-service_dev/actions/workflows/main.yml)
 
 Trello board:
